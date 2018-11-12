@@ -33,10 +33,21 @@ const gallery = {
       }
     }
     Vue.prototype.$imgVuer = {
+      open ({ current, urls }) {
+        // 添加图片预览方法
+        // if (urls.length !== 0) {
+          vm.isSingle = urls === 1
+          vm.imgList = urls
+          vm.isShow = true
+          vm.currentIndex = vm.imgList.indexOf(current)
+        // } else {
+        //   throw 'The picture list is empty'
+        // }
+      },
       close () {
         vm.closeGallery()
       }
-    } 
+    }
     Vue.directive('gallery', {
       bind(el) {
         if (!el.src) throw '<img/> missing src'

@@ -1,27 +1,27 @@
 # img-vuer
 
-> An image viewer base on Vue.js for mobile 
+> An image viewer base on Vue.js for mobile
 
-:ok_woman: Easy to use    
+:ok_woman: Easy to use
 
-:point_right: Swipe gesture    
+:point_right: Swipe gesture
 
-:mag: Zoom gesture   
+:mag: Zoom gesture
 
 
-V0.11.0 Now you can use thumbnail~   
+V0.11.0 Now you can use thumbnail~
 
 V0.13.0 Gallery hide when the physical back button is pressed (android device only)
 
 V0.15.0 Fix blurry after using scale()
 
-**Please Use Mobile Browser** :satisfied:      
+**Please Use Mobile Browser** :satisfied:
 
-**[live demo](https://ssshooter.github.io/img-vuer/index.html)**      
+**[live demo](https://ssshooter.github.io/img-vuer/index.html)**
 
-or scan the QRcode    
+or scan the QRcode
 
-<img width="150px" src="./QRcode.png">    
+<img width="150px" src="./QRcode.png">
 
 ## Install
 ``` bash
@@ -31,7 +31,7 @@ npm i img-vuer --save
 ```javascript
 // import img-vuer and install
 import gallery from 'img-vuer'
-Vue.use(gallery, { 
+Vue.use(gallery, {
   swipeThreshold: 150  // default 100 ,new in 0.12.0
 })
 ```
@@ -52,6 +52,9 @@ Vue.use(gallery, {
 
 <!-- trigger close gallery, new in 0.14.0 -->
 <button @click="$imgVuer.close()">close</button>
+
+<!-- use in function -->
+<button @click="$imgVuer.open({ current: url, urls: [urls] })">open</button>
 ```
 
 ## Development
@@ -66,11 +69,11 @@ npm run dev
 npm run build
 ```
 ## Troubleshooting
-### Abnormal with page scale      
-Add meta      
+### Abnormal with page scale
+Add meta
 ```html
 <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=0, maximum-scale=1">
 ```
 ### Should not use index as key for the component which is added `v-gallery`.
 ## License
-MIT  
+MIT

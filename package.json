@@ -1,8 +1,8 @@
 {
-  "name": "img-vuer",
+  "name": "img-vuer-s",
   "description": "img viewer",
-  "version": "0.15.4",
-  "author": "zhoudejie <ssshooterx@gmail.com>",
+  "version": "0.15.6",
+  "author": "Sun79 <1652829889@qq.com>",
   "keywords": [
     "vue",
     "gallery",
