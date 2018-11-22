@@ -1,7 +1,8 @@
 <template>
   <div>
     <div class="prevent-pass-through"></div>
-    <div class="slider" v-finger:singleTap="handleTapClose">
+    <!-- <div class="slider" v-finger:singleTap="handleTapClose"> -->
+    <div class="slider" @click="handleClickClose">
       <div
         class="item-wrapper"
         v-transform
@@ -45,6 +46,7 @@ export default {
        */
       swipeDelta: 0,
       swipeThreshold: 100,
+      clickCount: 0
     }
   },
   beforeRouteLeave(to, from, next) {
@@ -91,6 +93,16 @@ export default {
     },
   },
   methods: {
+    // 允许桌面端单击关闭图片
+    handleClickClose () {
+      setTimeout(() => {
+        if (this.clickCount === 1) {
+          this.handleTapClose()
+        }
+        this.clickCount = 0
+      }, 300)
+      this.clickCount++
+    },
     handleTapClose() {
       if (/android/i.test(navigator.userAgent)) {
         history.back()
