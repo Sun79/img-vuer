@@ -16,6 +16,15 @@ const gallery = {
     document.querySelector('body').appendChild(vm.$el)
 
     vm.swipeThreshold = options.swipeThreshold || 100
+
+    vm.isIndexShow =
+      options.isIndexShow === undefined ? true : options.isIndexShow
+
+    vm.useCloseButton =
+      options.useCloseButton === undefined ? true : options.useCloseButton
+
+    vm.preload = options.preload === undefined ? true : options.preload
+
     options.loadingStyle // TODO
     let openVuer = (el, group) => e => {
       let imgSrc = getImgSrc(el)
@@ -33,24 +42,44 @@ const gallery = {
       }
     }
     Vue.prototype.$imgVuer = {
+      close() {
+        vm.closeGallery.call(vm)
+      },
       open ({ current, urls }) {
         // 添加图片预览方法
-        // if (urls.length !== 0) {
-          vm.isSingle = urls === 1
-          vm.imgList = urls
-          vm.isShow = true
-          vm.currentIndex = vm.imgList.indexOf(current)
-        // } else {
-        //   throw 'The picture list is empty'
-        // }
+        vm.isSingle = urls.length === 1
+        vm.imgList = urls
+        vm.isShow = true
+        vm.currentIndex = vm.imgList.indexOf(current)
       },
-      close () {
-        vm.closeGallery()
-      }
+      onIndexChange(cb) {
+        // 0.16.0
+        vm.$watch('currentIndex', cb)
+      },
+      onToggle(cb) {
+        // 0.16.0
+        vm.$watch('isShow', cb)
+      },
+      changeBGColor(color) {
+        // 0.16.1
+        vm.backgroundColor = color
+      },
+      next() {
+        // 0.16.2
+        vm.next.call(vm)
+      },
+      prev() {
+        // 0.16.2
+        vm.prev.call(vm)
+      },
+      getCurrentIndex() {
+        // 0.16.2
+        return vm.currentIndex
+      },
     }
     Vue.directive('gallery', {
       bind(el) {
-        if (!el.src) throw '<img/> missing src'
+        if (!el.src) throw '<img /> missing src'
       },
       // add update
       inserted(el, binding) {
@@ -84,8 +113,8 @@ const gallery = {
           let index = imgGroup.indexOf(imgSrc)
           imgGroup.splice(index, 1)
         }
-      }
+      },
     })
-  }
+  },
 }
 export default gallery
