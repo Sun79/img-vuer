@@ -1,11 +1,6 @@
 <template>
   <div>
     <div class="prevent-pass-through"></div>
-    <!-- <div
-      class="slider"
-      :style="{'background-color': backgroundColor}"
-      @click="handleClickClose"
-    > -->
     <div
       class="slider"
       :style="{'background-color': backgroundColor}"
@@ -117,16 +112,6 @@ export default {
     }
   },
   methods: {
-    // 允许桌面端单击关闭图片
-    // handleClickClose () {
-    //   setTimeout(() => {
-    //     if (this.clickCount === 1) {
-    //       this.handleTapClose()
-    //     }
-    //     this.clickCount = 0
-    //   }, 300)
-    //   this.clickCount++
-    // },
     handleTapClose(e, el, fromCloseButton) {
       if (this.useCloseButton && !fromCloseButton) return
       if (/android/i.test(navigator.userAgent)) {

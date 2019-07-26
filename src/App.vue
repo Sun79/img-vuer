@@ -18,9 +18,9 @@
           :key="img.src">
       </div>
       <p>
-        <pre>&lt;img 
+        <pre>&lt;img
       <span class="vue-green">v-gallery</span>:group1
-      v-for="<span class="symbol">img in list1</span>" 
+      v-for="<span class="symbol">img in list1</span>"
       :src="img.src"&gt;</pre>
       </p>
 
@@ -34,9 +34,9 @@
           :key="img.src + index">
       </div>
       <p>
-        <pre>&lt;img 
+        <pre>&lt;img
       <span class="vue-green">v-gallery</span>="'group2'"
-      v-for="(img,index) in list2" 
+      v-for="(img,index) in list2"
       <span class="vue-green">:data-index="index"</span>
       :src="img.src"&gt;</pre>
       </p>
@@ -58,9 +58,9 @@
           :key="img.src + index">
       </div>
       <p>
-        <pre>&lt;img 
+        <pre>&lt;img
       <span class="vue-green">v-gallery</span>
-      v-for="img in list3" 
+      v-for="img in list3"
       :src="img.src"&gt;</pre>
       </p>
 
@@ -74,12 +74,17 @@
           :key="img.src + index">
       </div>
       <p>
-        <pre>&lt;img 
+        <pre>&lt;img
       <span class="vue-green">v-gallery</span>:group3
       v-for="(img,index) in list4"
       <span class="vue-green">:data-large="img.src"</span>
       <span class="vue-green">:src="img.thumbnail"</span>&gt;</pre>
       </p>
+      <div>
+        <button
+          @click="$imgVuer.open({ current: 'https://raw.githubusercontent.com/ssshooter/img-vuer/master/img/1.jpg', urls: ['https://raw.githubusercontent.com/ssshooter/img-vuer/master/img/1.jpg'] })"
+        >打开图片预览</button>
+      </div>
 
       <footer @click="toGitHub">
         <i class="iconfont icon-github"></i>GitHub</footer>
